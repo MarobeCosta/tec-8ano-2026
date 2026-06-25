@@ -3,10 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NAV04-REV-TEC8-V01.04 · 8º ANO · Recursão · 2026</title>
+<title>NAV04-REV-TEC8-V01.11 · 8º ANO · Recursão · 2026</title>
 <!--
   ════════════════════════════════════════════════════════════
   8º ANO · RECURSÃO · 2º BIM · 2ª AAIM · NAV04-REV-TEC8
+  V01.11 · CONSOLIDADO (V01.05→V01.11 num passo · sobre V01.04):
+  FASE 1 · AUDITORIA: gabaritos conferidos (todos corretos) · soc_a/soc_b corrigidos em QPA10 e QPA12 (rótulos A/B trocados) · trincas BBB(12-14) e AAA(18-20) quebradas invertendo QPA13 e QPA19 · 11A/11B · S.02.06 ok
+  FASE 2 · BLOCO 4: QDA2 com resumo da parte 1 (.resumo-par) + modal só-leitura (verEnunciadoAnterior/fecharEnunciadoAnterior · .vea-* z-index 9999)
+  FASE 3 · BLOCO 5: identificação por nome (banco 788 fem/1938 masc) · msg "Nome novo" alinhada ao 9º
+  FASE 4 · 3 SITUAÇÕES: (1) 2 arquivos index+nome completo · (2) versão V01.11 em todas as telas estáticas · (3) selo flutuante .selo-versao-fix em todas as telas (z-index 9998)
+  ════════════════════════════════════════════════════════════
+
   V01.04 · CORREÇÃO PRÊMIO 8,0–8,4 (sobre V01.03):
   · Tela inicial (sistema de prêmios · 12 níveis): "🍓 Morango" → "🍓 Pirulito de Morango"
   · Agora consistente com a tela de resultado final (que já estava correta)
@@ -749,6 +756,36 @@ body.feedback-erro {
 
 .contexto { font-size: 18px; line-height: 1.7; color: var(--cinza-texto); margin-bottom: 20px; }
 .contexto p { margin-bottom: 12px; }
+
+/* ===== SELO VERSÃO FLUTUANTE (C.03 · todas as telas) ===== */
+.selo-versao-fix {
+  position: fixed; bottom: 8px; right: 8px; z-index: 9998;
+  background: rgba(74, 42, 122, 0.88); color: #fff;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.5px;
+  padding: 4px 9px; border-radius: 8px;
+  font-family: 'Segoe UI', sans-serif; pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25); user-select: none;
+}
+@media print { .selo-versao-fix { display: none !important; } }
+
+/* ===== BLOCO 4 · QUESTÕES PAREADAS (resumo QDA1 + modal só-leitura) ===== */
+.resumo-par { background: #FFF8E7; border-left: 4px solid var(--laranja-energia); border-radius: 10px; padding: 12px 14px; margin: 10px 0 14px; font-size: 14px; line-height: 1.5; color: #5a4a2a; }
+.resumo-par-lbl { font-weight: 700; color: var(--laranja-energia); display: block; margin-bottom: 4px; }
+.resumo-par-btn { display: inline-block; margin-top: 8px; background: var(--azul-paz); color: #fff; border: none; padding: 7px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; }
+.vea-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 16px; }
+.vea-card { background: #fff; border-radius: 18px; max-width: 640px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 24px; position: relative; box-shadow: 0 16px 50px rgba(0,0,0,0.35); }
+.vea-fechar { position: absolute; top: 12px; right: 14px; background: var(--cinza-suave); border: none; width: 34px; height: 34px; border-radius: 50%; font-size: 16px; cursor: pointer; }
+.vea-titulo { font-size: 18px; font-weight: 800; color: var(--roxo-conviva); margin-bottom: 14px; padding-right: 30px; }
+.vea-ctx { font-size: 15px; line-height: 1.55; color: #333; margin: 0 0 10px; }
+.vea-fala { background: var(--roxo-claro); border-radius: 10px; padding: 12px; font-style: italic; margin: 10px 0; }
+.vea-perg { font-weight: 700; font-size: 16px; margin: 12px 0; color: var(--azul-paz); }
+.vea-alt { border: 2px solid var(--cinza-suave); border-radius: 10px; padding: 10px 12px; margin-bottom: 8px; font-size: 14px; }
+.vea-alt.certa { border-color: var(--verde-vida); background: var(--verde-claro); }
+.vea-resp { margin: 12px 0; padding: 10px 12px; border-radius: 10px; font-size: 14px; }
+.vea-resp.ok { background: var(--verde-claro); }
+.vea-resp.no { background: #FBE9E9; }
+.vea-lock { display: block; font-size: 12px; color: var(--cinza-medio); margin-top: 4px; }
+.vea-voltar { width: 100%; margin-top: 14px; background: linear-gradient(135deg, var(--verde-vida), #2E6029); color: #fff; border: none; padding: 14px; border-radius: 12px; font-size: 16px; font-weight: 700; cursor: pointer; }
 
 .fala-colega {
   background: var(--amarelo-destaque);
@@ -3235,6 +3272,7 @@ body.modo-bv .qpa-deco-lateral { display: none !important; }
 </style>
 </head>
 <body class="modo-bv">
+<div id="seloVersaoFix" class="selo-versao-fix" data-versao-suffix="EST">V01.11-EST</div>
 
 <!-- Frase temática fixa · topo esquerdo · todas as páginas -->
 <div class="frase-tematica">
@@ -3478,7 +3516,7 @@ body.modo-bv .qpa-deco-lateral { display: none !important; }
     <span class="bv-emoji-flut e4">📱</span>
   </div>
   <div class="bv-titulo">🕊️ Revisão preparatória para 2ª AAIM · 2º Bim.</div>
-  <div class="bv-subtitulo" data-versao-suffix="EST">8º ano · Tecnologia · NAV04-REV-TEC8-V01.04-EST · 2026</div>
+  <div class="bv-subtitulo" data-versao-suffix="EST">8º ano · Tecnologia · NAV04-REV-TEC8-V01.11-EST · 2026</div>
   <div class="bv-faixa-tema">Recursão: desenhando padrões que se repetem</div>
 
   <div class="bv-secao bv-secao-objetivo">
@@ -3532,7 +3570,7 @@ body.modo-bv .qpa-deco-lateral { display: none !important; }
 
 <div class="tela-login" id="telaLogin" style="display:none">
   <div class="logo-titulo">REVISÃO 2B · 8º ANO</div>
-  <div class="subtitulo" data-versao-suffix="EST">NAV04-REV-TEC8-V01.04-EST · Tecnologia · Pensamento Computacional</div>
+  <div class="subtitulo" data-versao-suffix="EST">NAV04-REV-TEC8-V01.11-EST · Tecnologia · Pensamento Computacional</div>
   <div class="tema-cabec">Recursão: desenhando padrões que se repetem</div>
   
   <form class="form-login" id="formLogin" onsubmit="iniciarQuiz(event)">
@@ -3897,7 +3935,7 @@ body.modo-bv .qpa-deco-lateral { display: none !important; }
     <input type="hidden" id="area" name="area">
     <input type="hidden" id="genero">
     <button type="button" class="botao-principal" onclick="iniciarQuiz({preventDefault:function(){}})">Começar a revisão 🚀</button>
-    <div class="aviso-beta" data-versao-suffix="EST">⚙️ Versão NAV04-REV-TEC8-V01.04-EST · 22 questões · Recursão · Pensamento Computacional</div>
+    <div class="aviso-beta" data-versao-suffix="EST">⚙️ Versão NAV04-REV-TEC8-V01.11-EST · 22 questões · Recursão · Pensamento Computacional</div>
   </form>
   
   <div class="info-prof">
@@ -4555,8 +4593,8 @@ const questoes = [
     pergunta_M: "O que o bloco repita (50) vezes realmente faz, segundo o Leandro?",
     alts: ["Cria do nada um personagem totalmente novo no jogo e ainda escolhe automaticamente a fase seguinte.", "Repete o movimento do baú 50 vezes, fazendo-o atravessar a tela aos poucos."],
     gabarito: "B",
-    soc_a: { dim: "5. Abertura ao novo → 5.1 Curiosidade → 🔍 5.1.4 Não atribuir poderes mágicos", txt: "Quem escolhe B dá ao bloco poderes que ele não tem. Repita só repete uma ação simples, não cria personagens." },
-    soc_b: { dim: "2. Engajamento → 2.3 Análise → 📊 2.3.2 Ler a ação do bloco", txt: "Quem escolhe A entendeu: o repita move o baú em 50 passos. É exatamente o que o bloco faz." },
+    soc_a: { dim: "5. Abertura ao novo → 5.1 Curiosidade → 🔍 5.1.4 Não atribuir poderes mágicos", txt: "Quem escolhe A dá ao bloco poderes que ele não tem. Repita só repete uma ação simples, não cria personagens." },
+    soc_b: { dim: "2. Engajamento → 2.3 Análise → 📊 2.3.2 Ler a ação do bloco", txt: "Quem escolhe B entendeu: o repita move o baú em 50 passos. É exatamente o que o bloco faz." },
     dica: { estr: "🔁 repita (50) = repetir a mesma ação 50 vezes; aqui, mover o baú em passos.", txt: "O bloco repita pega uma ação e a executa N vezes. Aqui, move o baú aos poucos. Ele não cria personagens nem muda de fase." },
     glos: [{ termo: "Repetição (laço)", def: "Estrutura que executa a mesma ação várias vezes seguidas." }, { termo: "Movimento em passos", def: "Deslocar um ator pouco a pouco, repetindo o movimento." }],
     sb_materias: ["💻 Tecnologia · laços de repetição.", "🎮 Design de jogos · animação por passos.", "📐 Matemática · contagem de repetições."],
@@ -4633,8 +4671,8 @@ const questoes = [
     pergunta_M: "O que o Mateus responde sobre as duas soluções?",
     alts: ["Só a recursão está correta, porque qualquer solução com laço é sempre considerada errada na programação.", "As duas estão corretas e dão o mesmo resultado; mudam só na técnica de repetir."],
     gabarito: "B",
-    soc_a: { dim: "1. Autogestão → 1.1 Foco → 🎯 1.1.3 Não criar regra falsa", txt: "Quem escolhe B inventa que laço é errado. Laço é uma técnica totalmente válida, tão correta quanto a recursão." },
-    soc_b: { dim: "5. Abertura ao novo → 5.2 Flexibilidade → 🔄 5.2.1 Aceitar mais de uma solução", txt: "Quem escolhe A entende: laço e recursão são duas técnicas válidas para o mesmo problema." },
+    soc_a: { dim: "1. Autogestão → 1.1 Foco → 🎯 1.1.3 Não criar regra falsa", txt: "Quem escolhe A inventa que laço é errado. Laço é uma técnica totalmente válida, tão correta quanto a recursão." },
+    soc_b: { dim: "5. Abertura ao novo → 5.2 Flexibilidade → 🔄 5.2.1 Aceitar mais de uma solução", txt: "Quem escolhe B entende: laço e recursão são duas técnicas válidas para o mesmo problema." },
     dica: { estr: "✅ laço e recursão são as duas válidas: a escolha depende do problema, não de uma estar errada.", txt: "Nenhuma das duas é errada. Às vezes o laço é mais simples; às vezes a recursão é mais natural. Depende do problema." },
     glos: [{ termo: "Solução válida", def: "Forma de resolver que produz o resultado correto." }, { termo: "Técnica", def: "Modo de fazer algo; laço e recursão são duas técnicas de repetição." }],
     sb_materias: ["💻 Tecnologia · técnicas equivalentes.", "🧠 Filosofia · pluralidade de soluções.", "📐 Matemática · caminhos diferentes para o mesmo número."],
@@ -4670,10 +4708,10 @@ const questoes = [
     fala: "Uma função recursiva pode ser usada nesse problema porque ela permite verificar setor por setor até localizar o pacote desejado.",
     pergunta_F: "A afirmação da Nicole sobre usar recursão está certa ou errada?",
     pergunta_M: "A afirmação do Nícolas sobre usar recursão está certa ou errada?",
-    alts: ["ERRADA: recursão jamais pode ser usada para buscar pacotes ou qualquer item em um sistema de logística.", "CERTA: a recursão verifica setor por setor, repetindo a busca até achar o pacote."],
-    gabarito: "B",
-    soc_a: { dim: "1. Autogestão → 1.1 Foco → 🎯 1.1.3 Não criar proibição falsa", txt: "Quem escolhe A inventa que recursão nunca serve para busca. Pelo contrário: buscar passo a passo é caso típico de recursão." },
-    soc_b: { dim: "2. Engajamento → 2.3 Análise → 📊 2.3.5 Reconhecer o caso de uso", txt: "Quem escolhe B vê o padrão: repetir a mesma busca em cada setor até achar. Isso É um problema recursivo." },
+    alts: ["CERTA: a recursão verifica setor por setor, repetindo a busca até achar o pacote.", "ERRADA: recursão jamais pode ser usada para buscar pacotes ou qualquer item em um sistema de logística."],
+    gabarito: "A",
+    soc_a: { dim: "2. Engajamento → 2.3 Análise → 📊 2.3.5 Reconhecer o caso de uso", txt: "Quem escolhe A vê o padrão: repetir a mesma busca em cada setor até achar. Isso É um problema recursivo." },
+    soc_b: { dim: "1. Autogestão → 1.1 Foco → 🎯 1.1.3 Não criar proibição falsa", txt: "Quem escolhe B inventa que recursão nunca serve para busca. Pelo contrário: buscar passo a passo é caso típico de recursão." },
     dica: { estr: "🔍 problema bom para recursão = repetir a mesma busca em partes, até encontrar.", txt: "A recursão serve quando você repete a mesma ação em partes do problema. Buscar setor por setor até achar o pacote é exatamente isso." },
     glos: [{ termo: "Busca recursiva", def: "Procurar repetindo a mesma ação em cada parte até encontrar o alvo." }, { termo: "Centro de distribuição", def: "Local onde pacotes são organizados e enviados." }],
     sb_materias: ["💻 Tecnologia · casos de uso da recursão.", "📦 Logística · rastreamento de pacotes.", "📐 Matemática · busca organizada em conjuntos."],
@@ -4904,10 +4942,10 @@ const questoes = [
     fala: "Comecei com energia total zerada. O que acontece com ela depois do primeiro ponto de energia coletado?",
     pergunta_F: "Depois do primeiro ponto, qual fica o valor de energia total, segundo a Luísa?",
     pergunta_M: "Depois do primeiro ponto, qual fica o valor de energia total, segundo o Lucas?",
-    alts: ["Fica igual ao valor do primeiro ponto coletado (0 + valor do ponto = valor do ponto).", "Fica em zero para sempre, porque uma variável que começou zerada jamais consegue mudar o seu valor depois."],
-    gabarito: "A",
-    soc_a: { dim: "2. Engajamento → 2.3 Análise → 📊 2.3.6 Calcular o acúmulo", txt: "Quem escolhe A faz a conta: zero mais o valor do ponto dá o valor do ponto. É o que a soma faz." },
-    soc_b: { dim: "1. Autogestão → 1.1 Foco → 🎯 1.1.3 Não criar regra falsa", txt: "Quem escolhe B acha que zerado nunca muda. Mas a variável existe justamente para acumular: ela soma e cresce." },
+    alts: ["Fica em zero para sempre, porque uma variável que começou zerada jamais consegue mudar o seu valor depois.", "Fica igual ao valor do primeiro ponto coletado (0 + valor do ponto = valor do ponto)."],
+    gabarito: "B",
+    soc_a: { dim: "1. Autogestão → 1.1 Foco → 🎯 1.1.3 Não criar regra falsa", txt: "Quem escolhe A acha que zerado nunca muda. Mas a variável existe justamente para acumular: ela soma e cresce." },
+    soc_b: { dim: "2. Engajamento → 2.3 Análise → 📊 2.3.6 Calcular o acúmulo", txt: "Quem escolhe B faz a conta: zero mais o valor do ponto dá o valor do ponto. É o que a soma faz." },
     dica: { estr: "➕ acumular = somar o novo ao que já tinha: 0 + ponto = valor do ponto.", txt: "A variável guarda o total. Começou em 0, somou o primeiro ponto: agora vale o valor desse ponto. Acumular é isso." },
     glos: [{ termo: "Variável acumuladora", def: "Variável que vai somando valores e guardando o total." }, { termo: "Valor inicial", def: "O valor da variável no começo; aqui, zero." }],
     sb_materias: ["💻 Tecnologia · variáveis acumuladoras.", "📐 Matemática · soma e acúmulo.", "🚴 Educação Física · pontos e energia em jogos esportivos."],
@@ -5445,7 +5483,7 @@ function autoDetectarGenero(nomeCompleto) {
     campoManual.style.display = 'none';
     hiddenGenero.value = 'M';
   } else {
-    info.textContent = '⚠️ Nome não reconhecido · escolha abaixo';
+    info.textContent = '⚠️ Nome novo · escolha abaixo (vamos adicionar à lista depois)';
     info.style.color = 'var(--laranja-energia)';
     campoManual.style.display = 'block';
     hiddenGenero.value = '';
@@ -5629,6 +5667,19 @@ function renderizarQuestao() {
   const pergunta = g === 'M' ? q.pergunta_M : q.pergunta_F;
   const colega = g === 'M' ? q.colega_M : q.colega_F;
   
+  // UP4 · resumo essencial da QDA1 pareada (aparece só nas QDA2)
+  let resumoPar = '';
+  if (q.qda === 2) {
+    const par = questoes.find(x => x.qba === q.qba && x.qda === 1);
+    if (par) {
+      const ctxPar = (g === 'M' ? par.contexto_M : par.contexto_F) || [];
+      const trecho = ctxPar[0] || '';
+      if (trecho) {
+        resumoPar = `<div class="resumo-par"><span class="resumo-par-lbl">📌 Lembrete da parte 1:</span> ${trecho} <button class="resumo-par-btn" onclick="verEnunciadoAnterior(${par.qpa})">👁️ ver questão anterior completa</button></div>`;
+      }
+    }
+  }
+  
   aplicarTomAula(q.aula);
   aplicarTomBloom(q.sb_bloom);
   aplicarDetalheQuestao(q.detalhe);
@@ -5710,6 +5761,7 @@ function renderizarQuestao() {
         <div class="bloco-unidade">📍 ${q.unidade}</div>
         <div class="titulo-questao">QPA.${String(q.qpa).padStart(2,'0')} · 🧠 ${titulo}</div>
         <div class="ref-questao">🔗 QBA.${String(q.qba).padStart(2,'0')} · QDA.${String(q.qda).padStart(2,'0')} · QPA.${String(q.qpa).padStart(2,'0')} (reorganizada por aula)</div>
+        ${resumoPar}
         <div class="contexto">${contextos.map((c, i) => `<div class="bloco-marcado" data-marc="ctx${i+1}"><span class="marcador-bloco">CTX.${String(i+1).padStart(2,'0')}</span><p>${c}</p>${cb('ctx'+(i+1))}</div>`).join('')}</div>
         <div class="bloco-marcado" data-marc="fp2"><span class="marcador-bloco">F.P2.01</span><div class="fala-colega">"${q.fala}" <em>— ${colega}</em></div>${cb('fp2')}</div>
         <div class="bloco-marcado" data-marc="q"><span class="marcador-bloco">Q.01</span><div class="pergunta">❓ ${pergunta}</div>${cb('q')}</div>
@@ -6518,6 +6570,49 @@ function voltarQuestao() {
 /* ════════════════════════════════════════════════════════════
    PROJETOS INTEGRADORES · funções de navegação
    ════════════════════════════════════════════════════════════ */
+
+function verEnunciadoAnterior(qpaPar) {
+  const q = questoes.find(x => x.qpa === qpaPar);
+  if (!q) return;
+  const g = estado.genero;
+  const titulo = g === 'M' ? q.titulo_M : q.titulo_F;
+  const contextos = (g === 'M' ? q.contexto_M : q.contexto_F) || [];
+  const pergunta = g === 'M' ? q.pergunta_M : q.pergunta_F;
+  const colega = g === 'M' ? q.colega_M : q.colega_F;
+  const respDada = estado.respostas[q.qpa];
+  let respHtml = '';
+  if (respDada) {
+    const acertou = respDada === q.gabarito;
+    respHtml = `<div class="vea-resp ${acertou ? 'ok' : 'no'}">Sua resposta na parte 1: <strong>${respDada}</strong> ${acertou ? '✅' : '❌'} <span class="vea-lock">🔒 só leitura · não dá para mudar</span></div>`;
+  }
+  const html = `
+    <div class="vea-overlay" onclick="fecharEnunciadoAnterior(event)">
+      <div class="vea-card" onclick="event.stopPropagation()">
+        <button class="vea-fechar" onclick="fecharEnunciadoAnterior()">✕</button>
+        <div class="vea-titulo">👁️ Questão anterior (QPA.${String(q.qpa).padStart(2,'0')}) · ${titulo}</div>
+        ${contextos.map(c => `<p class="vea-ctx">${c}</p>`).join('')}
+        <div class="vea-fala">"${q.fala}" <em>— ${colega}</em></div>
+        <div class="vea-perg">❓ ${pergunta}</div>
+        <div class="vea-alts">
+          <div class="vea-alt ${q.gabarito==='A'?'certa':''}"><b>A)</b> ${q.alts[0]}</div>
+          <div class="vea-alt ${q.gabarito==='B'?'certa':''}"><b>B)</b> ${q.alts[1]}</div>
+        </div>
+        ${respHtml}
+        <button class="vea-voltar" onclick="fecharEnunciadoAnterior()">Voltar para a questão atual ➜</button>
+      </div>
+    </div>`;
+  const div = document.createElement('div');
+  div.id = 'veaWrap';
+  div.innerHTML = html;
+  document.body.appendChild(div);
+}
+
+function fecharEnunciadoAnterior(ev) {
+  if (ev && ev.type === 'click' && ev.target && !ev.target.classList.contains('vea-overlay') && ev.target.tagName !== 'BUTTON') return;
+  const w = document.getElementById('veaWrap');
+  if (w) w.remove();
+}
+
 
 function mostrarProjetosIntegradores() {
   document.body.classList.remove("modo-bv");
@@ -7343,7 +7438,7 @@ function acessarModoProf() {
     trocarPerfilVersao('PROF');
     revelarCena();
     let html = `<div class="modo-prof">
-      <h2>📋 Modo Professor · NAV04-REV-TEC8-V01.04-PROF · 8º ano · 2B · Recursão</h2>
+      <h2>📋 Modo Professor · NAV04-REV-TEC8-V01.11-PROF · 8º ano · 2B · Recursão</h2>
       <p><strong>Gabarito (B-B-A-A cíclico · GAB.MOD.04):</strong></p>
       <table class="gabarito-tabela">
         <tr><th>QPA</th><th>Gab</th><th>QPA</th><th>Gab</th><th>QPA</th><th>Gab</th><th>QPA</th><th>Gab</th></tr>`;
@@ -7357,7 +7452,7 @@ function acessarModoProf() {
       html += '</tr>';
     }
     html += `</table>
-      <p style="margin-top:20px"><strong>📌 NAV04-REV-TEC8-V01.04-PROF · ${questoes.length}/22 questões · recursão, condição de parada, backtracking</strong></p>
+      <p style="margin-top:20px"><strong>📌 NAV04-REV-TEC8-V01.11-PROF · ${questoes.length}/22 questões · recursão, condição de parada, backtracking</strong></p>
       <ul style="margin:14px 0 14px 24px;line-height:1.8">
         <li><strong>Personagens F (com par M):</strong> Bianca/Bruno · Yasmin/Kauê · Camila/Rafael · Sofia/Murilo · Clara/Otávio · Letícia/Davi · Helena/Thiago · Larissa/Igor · Beatriz/Lucas · Aurora/Henrique</li>
         <li><strong>Colegas auxiliares:</strong> Ariadne/Adriano · Vinícius · Mariana/Marcelo · Pâmela · Jéssica</li>
